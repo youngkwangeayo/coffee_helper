@@ -12,4 +12,17 @@ public class MainController {
 
         return "home";
     }
+
+
+    @GetMapping("/layout")
+    public String layoutTest(){
+
+        return "layout/defaultLayout";
+    }
+
+    @GetMapping("/s")
+    public String s(){
+
+        return "yk/deheader";
+    }
 }

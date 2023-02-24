@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="UTF-8">
@@ -8,21 +8,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
 </head>
+
 <body>
+
+
     <div class="row">
         <!-- 해더영역 -->
         <th:block th:replace="layout/header.html :: headerFG"></th:block>
     </div>    
 
 
-    <div class="row" style="margin-top: 70px;">
+    <div class="row">
         <!-- 다른html파일에 들어갈 내용 부분 -->
         <th:block layout:fragment="content">
-            <div class="card">
-                <div class="card-body">
-                    에라잇씨잇팔
-                </div>
-            </div>
+            
         </th:block>
     </div>
 
