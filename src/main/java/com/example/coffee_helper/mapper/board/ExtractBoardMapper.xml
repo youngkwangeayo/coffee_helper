@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.coffee_helper.mapper.board.ExtractBoardMapper">
+
+<resultMap id="extract2" type="com.example.coffee_helper.dto.ExtractInfoDTO">
+        <result property = "extract.id" column = "e_id"/>
+        <result property = "extract.beenAmount" column = "been_amount"/>
+        <result property = "extract.extractTime" column = "extract_time"/>
+        <result property = "extract.extractAmount" column = "extract_amount"/>
+        <result property = "extract.beenType" column = "been_type"/>
+        <result property = "extract.userId" column = "u_id"/>
+        <result property = "extract.regDate" column = "reg_date"/>
+        <result property = "extract.regDateTime" column = "reg_date_time"/>
+        <result property = "extract.memo" column = "memo"/>
+        <result property = "equals.been" column = "been"/>
+        <result property = "equals.time" column = "time"/>
+        <result property = "equals.amount" column = "amount"/>
+    </resultMap>
+  
+
+
+
+
+    <select id="findExtractsOfUser" resultType="Extract">
+        select * from extract where u_id= #{userIdx} order by e_id desc Limit #{requestDTO.skip},#{requestDTO.size};
+    </select>
+    
+    <sql id="search">
+          <if test="requestDTO.type!=null and requestDTO.keyword!=''">
+            <trim prefix="AND">
+                extract.memo like concat('%',#{requestDTO.keyword},'%')
+            </trim>
+          </if>  
+    </sql>
+
+
+   
+    <select id="boardCountOfUser" resultType="java.lang.Integer">
+        select count(e_id) from extract where u_id=#{userIdx}
+        <include refid="search"></include>;
+    </select>
+
+    <select id="findExtractInfoOfUser" resultType="com.example.coffee_helper.dto.ExtractInfoDTO" resultMap="extract2">
+        select extract.e_id,extract.memo,extract.extract_time,extract.been_amount,extract.extract_amount,extract.grinding,extract.been_type,extract.reg_date,extract.reg_date_time,
+         extract_equals_info.time,extract_equals_info.been,extract_equals_info.amount,
+         group_concat(distinct extract_ment.ment) as ment from extract_save_ment 
+         inner join extract_ment on extract_save_ment.m_id=extract_ment.m_id inner join extract on extract_save_ment.e_id=extract.e_id
+         inner join extract_equals_info on extract_equals_info.id=extract.eq_id
+         where extract.u_id= #{userIdx}
+         <include refid="search"></include>
+         group by extract.e_id,extract_ment.eq_id
+         order by extract.e_id desc limit #{requestDTO.skip},#{requestDTO.size};
+    </select>
+
+</mapper> 
+  <!-- <resultMap id="extract2" type="com.example.coffee_helper.dto.ExtractInfoDTO">
+        <result property = "id" column = "e_id"/>
+        <result property = "beenAmount" column = "been_amount"/>
+        <result property = "extractTime" column = "extract_time"/>
+        <result property = "extractAmount" column = "extract_amount"/>
+        <result property = "beenType" column = "been_type"/>
+        <result property = "userId" column = "u_id"/>
+        <result property = "regDate" column = "reg_date"/>
+        <result property = "regDateTime" column = "reg_date_time"/>
+        <result property = "been" column = "been"/>
+        <result property = "time" column = "extract"/>
+        <result property = "amount" column = "amount"/>
+    </resultMap> -->

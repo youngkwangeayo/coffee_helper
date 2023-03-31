@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <style>
+        .sticky {
+             position: -webkit-sticky;
+            position: sticky;
+            top: 0;}
+        li{margin-top: 50px;}
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;}
+    </style>
+</head>
+<body>
+    <div class="row">
+        <!-- 해더영역 -->
+        <!-- <th:block th:replace="layout/header.html :: headerFG"></th:block> -->
+    </div>    
+    
+
+    <div class="row" style="height: 100%;">
+        <div class="col-md-2" style="height: 100%;">
+           <div class="card" style="height: 100%;">
+             <th:block th:replace="layout/adminSideBar.html :: adminSideBar"></th:block>
+           </div>
+        </div>
+        <div class="col-md-4 offset-md-2">
+            <div class="row" style="margin-top: 50px;">
+                <a class="navbar-brand text-center fs-1" href="/"><p class="fw-bold">coffeeHelper [[${resultMessage}]]</p></a>
+            </div>
+            <div class="card" style="margin-top: 25px;">
+                <div class="card-body">
+                    
+                </div>
+            </div>        
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    
+
+
+    <div class="row" style="margin-top: 100px;">
+        <!-- 푸터영역 -->
+       <th:block th:replace="layout/footer.html :: footerFG">
+
+       </th:block>
+    </div>        
+        
+
+
+    <script src="/bootstrap/js/bootstrap.js"></script>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        
+        let message = /*[[${resultMessage}]]*/
+        console.log(message);
+        
+        if(message!=null){
+            alert(message);
+        }
+    
+        /*]]>*/
+    </script>
+   
+</body>
+
+</html>
+

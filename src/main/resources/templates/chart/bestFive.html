@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+   
+</head>
+
+<body>
+    <th:block th:fragment="bestFive">
+        <p class="text-center">좋은 추출5개</p>
+        <table class="table" style="border: solid;">
+            <thead>
+                <tr>
+                    <th scope="col">추출시간</th>
+                    <th scope="col">원두양</th>
+                    <th scope="col">추출량</th>
+                    <th scope="col">추출량 결과</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:if="${bestFiveDTO!=null}">
+                    <th:block th:each="bestFive : ${bestFiveDTO}">
+                        <tr>
+                           <td th:text="${bestFive.extractTime}"></td>
+                           <td th:text="${bestFive.beenAmount}"></td>
+                           <td th:text="${bestFive.extractAmount}"></td>
+                           <td>[[${bestFive.time}]] , [[${bestFive.been}]] , [[${bestFive.amount}]]</td>
+                        </tr>
+
+                    </th:block>
+
+                </th:block>
+                
+    
+            
+            </tbody>
+    
+        </table>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/bootstrap/js/bootstrap.js"></script>
+
+
+        <script>
+          
+            
+        </script>
+    </th:block>
+</body>
+
+</html>

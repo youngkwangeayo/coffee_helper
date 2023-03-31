@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.coffee_helper.mapper.testMapper.Test_cMapper">
+    <select id="findALl" resultType="TestC">
+        select *from test_c;
+    </select>
+
+
+
+    <select id="testFive" resultType="ChartBestFive">
+        select extract.e_id,extract.extract_time,extract.been_amount,extract.extract_amount,
+         extract_equals_info.amount,extract_equals_info.time,extract_equals_info.been from extract inner join extract_save_ment on extract.e_id=extract_save_ment.e_id 
+         inner join extract_ment on extract_ment.m_id=extract_save_ment.m_id
+         inner join extract_equals_info on extract_ment.eq_id=extract_equals_info.id
+         where extract_equals_info.id=14 order by RAND() LIMIT 5;
+    </select>
+</mapper>
+

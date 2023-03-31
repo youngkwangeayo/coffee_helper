@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+    <th:block th:fragment="extractSoft">
+        <div class="card"  style=" width: 80%; height: 270px;">
+            <div class="card-body">
+                
+                <div class="row">
+                    <!-- <div class="col-md-6"><button class="form-control btn btn-secondary" onclick="extractSoft()">가상머신 커피 추출하기</button></div> -->
+                    <div class="col-md-6"><a href="/machineExtract" class="form-control btn btn-secondary">가상머신 커피 추출하기</a></div>
+                    <div class="col-md-6">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="form-control btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            본인추출 입력하기
+                        </button>
+                    </div>
+                </div>
+        
+                <div >
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="/user/extract" method="get">
+                                <div class="modal-body">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">추출시간</span>
+                                        <input type="number" class="form-control" name="extractTime" required>
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">원두량</span>
+                                        <input type="number" class="form-control" name="beenAmount">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">추출량</span>
+                                        <input type="number" class="form-control" name="extractAmount" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">분쇄도</span>
+                                        <input type="number" class="form-control" name="grinding">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">원두타입</span>
+                                        <input type="text" class="form-control" name="beenType">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">완료</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 모달 -->
+                    <p class="form-control" style="margin-top: 10px;">추출정보  
+                        추출시간 :  <th:block th:if="${resultExtractDTO!=null}">[[${resultExtractDTO.extract.extractTime}]] </th:block>
+                        원두량 :  <th:block th:if="${resultExtractDTO!=null}">[[${resultExtractDTO.extract.beenAmount}]] </th:block>
+                         추출량 :   <th:block th:if="${resultExtractDTO!=null}">[[${resultExtractDTO.extract.extractAmount}]]</th:block>
+                    </p>
+                
+                <div style="overflow: scroll; overflow-x: hidden; width: 100%; height: 40%; padding: 10px; border: solid;">
+                    추출결과
+                    <th:block th:if="${resultExtractDTO!=null}">
+                        <th:block th:each="ments : ${resultExtractDTO.ments}">
+                            <p th:text="${ments.ment}"></p>
+                        </th:block>
+                    </th:block>
+                </div>
+                <th:block th:if="${resultExtractDTO!=null}">
+                    <div style="margin-top: 5px;"><button class="form-control btn btn-outline-success" onclick="extractSave()">추출결과 저장</button></div>
+                </th:block>
+                
+                
+            </div>
+        </div>    
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+        let xhr = new XMLHttpRequest();
+        let url = "/extract/machineExtract";
+        
+
+        function extractSave(){
+            let user = /*[[${user}]]*/;
+            if(user==null){
+                alert("로그인 이후 저장 가능합니다.");
+            }else{
+                let memo= prompt("메모입력(선택사항)");
+                let c = confirm("저장하시겠습니까?");
+                if(!c){
+                    return;
+                }
+                let resultExtractDTO = /*[[${resultExtractDTO}]]*/
+                resultExtractDTO.extract.memo=memo;
+                xhr.open("POST",url,true);//요청방식
+                xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");//해더
+                xhr.send(JSON.stringify(resultExtractDTO));//바디
+                xhr.onload = function(){
+                    if(xhr.status!=200){
+                        alert("저장실패");
+                    }else{
+                        alert("저장성공");
+                    }
+                }
+
+
+            }
+
+            
+        }
+           /*]]>*/
+    </script>
+       
+
+       <script src="/bootstrap/js/bootstrap.js"></script>
+    </th:block>
+
+    
+
+</body>
+
+</html>

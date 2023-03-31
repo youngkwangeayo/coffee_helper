@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <div class="row">
+        <!-- 해더영역 -->
+        <th:block th:replace="layout/header.html :: headerFG"></th:block>
+    </div>    
+    
+
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="row">
+                <a class="navbar-brand text-center fs-1" href="/"><p class="fw-bold">coffeeHelper</p></a>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">추출한날짜</th>
+                <th scope="col">추출시간</th>
+                <th scope="col">원두양</th>
+                <th scope="col">추출량</th>
+                <th scope="col">설정글라인딩</th>
+                <th scope="col">추출된 결과</th>
+                <th scope="col">피드백멘트</th>
+                <th scope="col">입력한메모</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:if="${pageDTO.dtoList!=null}">
+                <th:block th:each="dtoList : ${pageDTO.dtoList}">
+                    <tr>
+                        <td th:text="${dtoList.extract.regDateTime}"></td>
+                        <td th:text="${dtoList.extract.extractTime}"></td>
+                        <td th:text="${dtoList.extract.beenAmount}"></td>
+                        <td th:text="${dtoList.extract.extractAmount}"></td>
+                        <td th:text="${dtoList.extract.grinding}"></td>
+                        <td>[[${dtoList.equals.time}]] ,[[${dtoList.equals.been}]] ,[[${dtoList.equals.amount}]]</td>
+                        <td th:text="${dtoList.ment}"></td>
+                        <td th:text="${dtoList.extract.memo}"></td>
+                    </tr>
+                </th:block>
+                
+            </th:block>
+            
+
+        
+        </tbody>
+
+    </table>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <nav aria-label="Page navigation example" style="margin: 20px;">
+                <ul class="pagination">
+                    <li th:if="${pageDTO.type==null}" class="page-item"><a class="page-link" th:onclick="prevPage([[${pageDTO.page}]],[[${pageDTO.prev}]])">Previous</a></li>
+                    <!-- 검색이 있을시 -->
+                    <li th:if="${pageDTO.type!=null}" class="page-item">
+                        <a class="page-link" th:onclick="prevPage([[${pageDTO.page}]],[[${pageDTO.prev}]],[[${pageDTO.type}]],[[${pageDTO.keyword}]])">Previous</a>
+                    </li>
+                    <th:block th:with="start=${pageDTO.startPage}, end=${pageDTO.endPage}, page=${pageDTO.page}">
+                        <th:block th:each="pageNum : ${#numbers.sequence(start,end)}">
+                            <th:block th:if="${pageDTO.type==null}">
+                                <li class="page-item" th:if="${pageNum!=page}"><a class="page-link"  th:href="@{'/user/coffee?page='+${pageNum}}" th:text="${pageNum}"></a></li>
+                                <li class="page-item active" th:if="${pageNum==page}"><a class="page-link"  th:href="@{'/user/coffee?page='+${pageNum}}" th:text="${pageNum}"></a></li>
+                            </th:block>
+                            <!-- 검색결과가 있을시 -->
+                            <th:block th:if="${pageDTO.type!=null}">
+                                <li class="page-item" th:if="${pageNum!=page}">
+                                    <a class="page-link"  th:href="@{'/user/coffee?page='+${pageNum}+'&type='+${pageDTO.type}+'&keyword='+${pageDTO.keyword}}" th:text="${pageNum}"></a>
+                                </li>
+                                <li class="page-item active" th:if="${pageNum==page}"> <!-- 해당페이지 파랑색표시 위해 -->
+                                    <a class="page-link"  th:href="@{'/user/coffee?page='+${pageNum}+'&type='+${pageDTO.type}+'&keyword='+${pageDTO.keyword}}" th:text="${pageNum}"></a>
+                                </li>
+                            </th:block>
+                        </th:block>
+                    </th:block>
+                    <li th:if="${pageDTO.type==null}" class="page-item"><a class="page-link" th:onclick="nextPage([[${pageDTO.page}]],[[${pageDTO.next}]])">Next</a></li>
+                    <!-- 검색이 있을시 -->
+                    <li th:if="${pageDTO.type!=null}" class="page-item">
+                        <a class="page-link" th:onclick="nextPage([[${pageDTO.page}]],[[${pageDTO.next}]],[[${pageDTO.type}]],[[${pageDTO.keyword}]])">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="row">
+                <form class="form-group" role="search" action="/user/coffee" method="get" >
+                    <input type="hidden" name="type" value="memo">
+                    <!-- <div class="input-group">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">시작날짜</span>
+                        <input class="form-control me-2" type="date" name="from">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">끝 날짜</span>
+                        <input class="form-control me-2" type="date" name="to">
+                    </div> -->
+                    <div class="input-group">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">메모검색</span>
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" th:value="${pageDTO.keyword}">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+   
+
+    
+    
+    
+
+
+    <div class="row" style="margin-top: 100px;">
+        <!-- 푸터영역 -->
+       <th:block th:replace="layout/footer.html :: footerFG">
+
+       </th:block>
+    </div>        
+        
+
+
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script>
+        function nextPage(pageNum,next,type,keyword){
+            if(next){
+                if(type!=null){
+                    location.href="/user/coffee?page="+(pageNum+1)+"&type="+type+"&keyword="+keyword;
+                    return;
+                }
+                location.href="/user/coffee?page="+(pageNum+1);
+            }
+
+        }
+
+        function prevPage(pageNum,prev,type,keyword){
+            console.log(prev);
+            if(prev){
+                if(type!=null){
+                    location.href="/user/coffee?page="+(pageNum-1)+"&type="+type+"&keyword="+keyword;
+                    return;
+                }
+                location.href="/user/coffee?page="+(pageNum-1);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
+

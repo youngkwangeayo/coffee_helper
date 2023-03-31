@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <style>
+        .sticky {
+             position: -webkit-sticky;
+            position: sticky;
+            top: 0;}
+        li{margin-top: 50px;}
+        html, body {
+            margin: 0;
+            height: 100%;
+            
+            overflow: hidden;}
+        .card-body{margin-right: 50px;}
+        select, input,span{margin-top: 35px;}
+        .card{margin: 0; border: hidden;}
+        .line{border: solid;}
+    </style>
+</head>
+<body>
+    <div class="row">
+        <!-- 해더영역 -->
+        <!-- <th:block th:replace="layout/header.html :: headerFG"></th:block> -->
+    </div>    
+    
+
+    <div class="row" style="height: 100%;">
+        <div class="col-md-2" style="height: 100%;">
+           <div class="line" style="height: 100%;">
+             <th:block th:replace="layout/adminSideBar.html :: adminSideBar"></th:block>
+           </div>
+        </div>
+        <div class="col-md-10">
+            <div class="row" style="margin-top: 50px;">
+                <div class="col-md-4 offset-md-2">
+                    <a class="navbar-brand text-center fs-1" href="/"><p class="fw-bold">coffeeHelper</p></a>    
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-body" style="height: 800px; margin-top: 55px;">
+                        <div class="line">
+                            <h3 class="text-center">커피멘트 설정</h3>
+                            <p class="text-center">커피 추출결과 옵션을 선택하고 해당 추출의 멘트를 적어주세요</p>
+                        </div>
+                        <form action="/admin/extractMent" method="post">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">추출시간</span>
+                                <select name="time" class="form-select">
+                                    <option value="good">good</option>
+                                    <option value="over">over</option>
+                                    <option value="row">row</option>
+                                </select>
+                            
+                            
+                                <span class="input-group-text" id="inputGroup-sizing-sm">원두양</span>
+                                <select name="been" class="form-select">
+                                    <option value="good">good</option>
+                                    <option value="over">over</option>
+                                    <option value="row">row</option>
+                                </select>
+                            
+                            
+                                <span class="input-group-text" id="inputGroup-sizing-sm">추출량</span>
+                                <select name="amount" class="form-select">
+                                    <option value="good">good</option>
+                                    <option value="over">over</option>
+                                    <option value="row">row</option>
+                                </select>
+                            </div>
+                             <div class="input-group input-group-lg">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">추출멘트</span>
+                                <input class="form-control" type="text" placeholder="추출멘트" name="ment" required="true">
+                            </div>
+                              <input type="submit"  class="form-control btn btn-secondary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+    <div class="row" style="margin-top: 100px;">
+        <!-- 푸터영역 -->
+       <th:block th:replace="layout/footer.html :: footerFG">
+
+       </th:block>
+    </div>        
+        
+
+
+    <script src="/bootstrap/js/bootstrap.js"></script>
+   
+</body>
+
+</html>
+

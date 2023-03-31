@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+<body>
+    결과창이요
+    <p th:text="${car}"></p>
+
+    <script>
+        let xhr = new XMLHttpRequest();
+        
+        window.onload = function(){
+            console.log("tq");
+            console.log(xhr.status);
+
+        }
+        xhr.onload = function(){
+            console.log("tqqt");
+                    if(xhr.status!=200){
+                        alert("댓글작성 실패");
+                        console.log(xhr.status);    
+                    }
+                    console.log(xhr.status);                    
+                    console.log(result);
+                }
+                
+            
+
+    </script>
+</body>
+</html>

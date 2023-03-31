@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+    <th:block th:fragment="extractInfo">
+        방금추출정보
+
+        <th:block th:if="${resultExtractDTO!=null}">
+            <input id="time" type="hidden" th:value="${resultExtractDTO.extract.extractTime}">            
+            <input id="amount" type="hidden" th:value="${resultExtractDTO.extract.extractAmount}">            
+            <input id="been" type="hidden" th:value="${resultExtractDTO.extract.beenAmount}">      
+        </th:block>
+
+        <canvas id="myChartInfo"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/bootstrap/js/bootstrap.js"></script>
+
+
+        <script>
+            let myChartInfo = document.getElementById("myChartInfo");
+            let time;
+            let been;
+            let amount;
+            try {
+                time = document.getElementById("time").value;
+                been = document.getElementById("been").value;
+                amount = document.getElementById("amount").value;
+                
+            } catch (Error) {
+                time = 0;
+                been =0;
+                amount =0;
+            }
+
+            console.log(time);
+            
+           
+                
+         
+           
+                
+           
+            const data = {
+                labels: [
+                    '추출시간',
+                    '추출양',
+                    '원두량',
+                   
+                ],
+                datasets: [{
+                    label: '좋은추출 최소',
+                    data: [25, 20, 14],
+                    fill: false,
+
+                }, {
+                    label: '좋은추출 맥시멈',
+                    data: [35, 31, 19],
+                    fill: '-1',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    pointBackgroundColor: 'rgb(54, 162, 235)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(54, 162, 235)'
+                }, {
+                    label: '방금추출',
+                    data: [time,amount,been],
+                    borderColor : 'rgb(255, 99, 132)',
+                    fill: true,
+                }]
+            };
+
+            let chart = new Chart(myChartInfo, {
+                type: 'radar',
+                data: data,
+                options: {
+                    plugins: {
+                        filler: {
+                            propagate: false
+                        },
+                        'samples-filler-analyser': {
+                            target: 'chart-analyser'
+                        }
+                    },
+                    interaction: {
+                        intersect: false
+                    }
+                }
+            })
+
+            
+        </script>
+    </th:block>
+</body>
+
+</html>

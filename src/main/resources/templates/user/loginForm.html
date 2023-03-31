@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <div class="row">
+        <!-- 해더영역 -->
+        <th:block th:replace="layout/header.html :: headerFG"></th:block>
+    </div>    
+    
+
+    <div class="row" style="margin-top: 150px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="row">
+                <a class="navbar-brand text-center fs-1" href="/"><p class="fw-bold">coffeeHelper</p></a>
+            </div>
+            <div class="card" style="margin-top: 25px;">
+                <div class="card-body">
+                    <form action="/loginProc" method="post">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">아이디&nbsp;&nbsp;&nbsp;</span>
+                            <input type="text" name="username" class="form-control" placeholder="id" required="true">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">패스워드</span>
+                            <input type="password" name="password" class="form-control" placeholder="password" required="true">
+                        </div>
+                        <div class="input-group mb-3" style="margin-top: 30px;">
+                            <input class="form-control btn btn-secondary" type="submit" value="로그인">
+                        </div>  
+                    
+                    </form><br>
+                    <div class="row">
+                        <div class="col-md-4 offset-md-2">
+                            <a href="/oauth2/authorization/google">구글로그인 이동</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="/join">회원가입 이동</a> <br>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>        
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    
+    
+    
+
+
+    <div class="row" style="margin-top: 100px;">
+        <!-- 푸터영역 -->
+       <th:block th:replace="layout/footer.html :: footerFG">
+
+       </th:block>
+    </div>        
+        
+
+
+    <script src="/bootstrap/js/bootstrap.js"></script>
+</body>
+
+</html>
+
+
+
+
