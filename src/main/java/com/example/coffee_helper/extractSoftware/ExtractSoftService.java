@@ -30,7 +30,8 @@ public class ExtractSoftService {
     
     //추출시간과 원두량이 정상이면 추출량은 추출시간보다 5정도 작음
     //그치만 가끔만 랜덤으로 출력되게 원두 분쇄도 랜덤값 저장해서 추출이 적거나 많게 구현
-
+    //추출시간 정상 원두량 정상인데 추출이 적다 = 글라이딩이 많이되었다
+    
 
     public ExtractDTO extractSoft(){
         ExtractDTO extractDTO = new ExtractDTO();

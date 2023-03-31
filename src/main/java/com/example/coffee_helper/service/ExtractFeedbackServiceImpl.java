@@ -4,85 +4,138 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.example.coffee_helper.mapper.FeedbackMentMapper;
 import com.example.coffee_helper.dto.BestConditionDTO;
+import com.example.coffee_helper.dto.ExtractDTO;
+import com.example.coffee_helper.dto.ExtractEqualsInfoDTO;
+import com.example.coffee_helper.dto.ExtractMentDTO;
+import com.example.coffee_helper.entity.ExtractMent;
+import com.example.coffee_helper.extractSoftware.ExtractSoftService;
+import com.example.coffee_helper.dto.FeedbackOption;
+import com.example.coffee_helper.dto.ResponseResultExtractDTO;
 
 @Service
 public class ExtractFeedbackServiceImpl implements ExtractFeedbackService {
 
+    @Autowired
+    ExtractSoftService extractSoftWare;
 
     
     @Autowired
     BestConditionService conditionService;
-    
-     //최대한 중복을 줄이기 위해 매퍼에는 셀렉트올로 줌 맵퍼에서 쿼리문에서 값을 줘버리면 메소드가 최소 3개는 더생겨야함을 방지
-    //디비에 옵션퀄럼 무엇이든 속성열의 속성에 퀄럼 컨디션,체크에 값이 추가가 되어도 안에 값이 몇개인지,값이 뭔지몰라도 구동이 되게끔 자바처리함
-    public int optionRow(String option){
-        HashMap<Object, Object> map = new HashMap<>();
-        map = extractAmount(option);
-        return compareToRow(map);
-    }
 
-    public int optionOver(String option){
-        HashMap<Object, Object> map = new HashMap<>();
-        map = extractAmount(option);
-        return compareToOver(map);
-    }
+    @Autowired
+    StandardExtract standardExtract;
 
+    @Autowired
+    FeedbackMentMapper MentMapper;
 
-
-    // 1_디비에저장된(소프트웨어로 api로 만들어뺀다하면 디티오에 클래스 변수로 저장되어있는 값)을 리스트로 받아
-    // 옵션퀄럼에 속성이 extraction amount(추출량) 인 경우 속성값을 맵에 담음
-    private HashMap<Object, Object> extractAmount(String option){
-        List<BestConditionDTO>conditionDTOs=conditionService.findAllCondition();
-        HashMap<Object, Object> extractAmountMap = new HashMap<>();
-        int j=0;
-        for(int i=0; i<conditionDTOs.size(); i++){
-            if(conditionDTOs.get(i).getOption().equals(option)){
-                extractAmountMap.put(j, conditionDTOs.get(i).getCondition());
-                j++;
-            }
-        }    
-        return extractAmountMap;
-    }    
+    @Autowired
+    ExtractMentService mentService;
     
     
-    //2_ 1번에처리한 값을몰라도 알고리즘으로 맵의 값과 갯수를 알아내 배열을 사용하여 최저값 반환
-    private int compareToRow(HashMap<Object, Object> map){
-        int tmep =0;
-        for(Object o : map.keySet()){
-            tmep+=1;
-        }    
-        int[]arry=new int[tmep];
-        for(Object o : map.keySet()){
-            arry[(int)o]=(int)map.get(o);
-        }   
-        Arrays.sort(arry);
-       
-
-        return arry[0];
-    }
-
-     //2_ 1번에처리한 값을몰라도 알고리즘으로 맵의 값과 갯수를 알아내 배열을 사용하여 최값 반환
-     private int compareToOver(HashMap<Object, Object> map){
-        int tmep =0;
-        for(Object o : map.keySet()){
-            tmep+=1;
-        }     
-        Integer[]arry=new Integer[tmep];
-        for(Object o : map.keySet()){
-            arry[(int)o]=(int)map.get(o);
-        }    
-        Arrays.sort(arry,Collections.reverseOrder());
+    public ResponseResultExtractDTO feedbakMent(ExtractDTO extractDTO){
         
-       
+        //추출과 비교하기위해 머신에 해당 세팅값 모조리 불러오기
+        // ExtractDTO extractDTO = extractSoftWare.extractSoft();
+        int timeRow = standardExtract.optionRow("extraction time");
+        int timeOver = standardExtract.optionOver("extraction time");
+        int beenAmountRow=standardExtract.optionRow("been amount");
+        int beenAmountOver=standardExtract.optionOver("been amount");
+        int extractionRow=standardExtract.optionRow("extraction amount");
+        int extractionOver=standardExtract.optionOver("extraction amount");
 
-        return arry[0];
-    }    
+        // good,  bad-over,  bad-row
+        String feedbackTime = currentStatus(extractDTO.getExtractTime(),timeRow,timeOver);
+        String feedbackBeen = currentStatus(extractDTO.getBeenAmount(),beenAmountRow,beenAmountOver);
+        String feedbackExtraction = currentStatus(extractDTO.getExtractAmount(),extractionRow,extractionOver);
 
+        ExtractEqualsInfoDTO equalsInfoDTO= ExtractEqualsInfoDTO.builder()
+        .time(feedbackTime)
+        .amount(feedbackExtraction)
+        .been(feedbackBeen)
+        .build();
+
+        System.out.println(equalsInfoDTO);
+        int eqaulsId =mentService.findEqaulsId(equalsInfoDTO);
+        equalsInfoDTO.setId(eqaulsId);
+        extractDTO.setEq_id(eqaulsId);
+
+        List<ExtractMentDTO>ments = mentService.findMents(eqaulsId);
+
+        
+        ResponseResultExtractDTO resultExtractDTO = new ResponseResultExtractDTO(extractDTO,equalsInfoDTO,ments);
+        
+        return resultExtractDTO;
+    }
+
+    
+    
+    //각조건별 결과값 얻기 굳 오버 로우
+    private String currentStatus(int check,int row, int over ){
+        // 각 옵션별 조건
+        String option =null;
+        if(row < check){
+            System.out.println("최소기준점 통과");
+            if(check < over){
+                System.out.println("베스트조건");
+                option = "good";
+            }else{
+                System.out.println("조건초과");
+                option = "over";        
+            }
+        }else{
+            System.out.println("조건보다 못미침");
+            option = "row";
+        }
+
+        return option;
+    } 
+
+   
+    
+   
+
+    /*
+     * 
+     *   public List<ExtractMentDTO> feedbakMent(ExtractDTO extractDTO){
+        
+        //추출과 비교하기위해 머신에 해당 세팅값 모조리 불러오기
+        // ExtractDTO extractDTO = extractSoftWare.extractSoft();
+        int timeRow = standardExtract.optionRow("extraction time");
+        int timeOver = standardExtract.optionOver("extraction time");
+        int beenAmountRow=standardExtract.optionRow("been amount");
+        int beenAmountOver=standardExtract.optionOver("been amount");
+        int extractionRow=standardExtract.optionOver("extraction amount");
+        int extractionOver=standardExtract.optionOver("extraction amount");
+
+        // good,  bad-over,  bad-row
+        String feedbackTime = currentStatus(extractDTO.getExtractTime(),timeRow,timeOver);
+        String feedbackBeen = currentStatus(extractDTO.getBeenAmount(),beenAmountRow,beenAmountOver);
+        String feedbackExtraction = currentStatus(extractDTO.getExtractAmount(),extractionRow,extractionOver);
+
+        ExtractEqualsInfoDTO equalsInfoDTO= ExtractEqualsInfoDTO.builder()
+        .time(feedbackTime)
+        .amount(feedbackExtraction)
+        .been(feedbackBeen)
+        .build();
+
+        System.out.println(equalsInfoDTO);
+        int eqaulsId =mentService.findEqaulsId(equalsInfoDTO);
+        
+
+
+
+        
+        return mentService.findMents(eqaulsId); 
+    }
+     */
+
+   
 
 
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <style>
+        .sticky {
+             position: -webkit-sticky;
+            position: sticky;
+            top: 0;}
+        li{margin-top: 50px;}
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;}
+    </style>
+</head>
+<body>
+    
+<th:block th:fragment="adminSideBar">
+
+    
+            <nav>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/admin/extractMent">추출멘트설정</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                </ul>
+            </nav>
+        
+
+
+    
+
+
+    <script src="/bootstrap/js/bootstrap.js"></script>
+</th:block>    
+</body>
+
+</html>
+

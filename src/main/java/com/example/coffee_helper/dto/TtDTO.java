@@ -1,4 +1,4 @@
-package com.example.coffee_helper.entity;
+package com.example.coffee_helper.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,11 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExtractResult {
+@Builder
+public class TtDTO {
     private int id;
-    private String extract_result;
-    
+    private int d;
+    private String s;
+    private String is;
 }

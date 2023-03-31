@@ -6,11 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class ExtractResultDTO {
+@Builder
+public class DesignateMentNumDTO {
     private int id;
-    private String extract_result;
+    private String time;
+    private String been;
+    private String amount;
+    
 }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+     
 </head>
 <body>
     <div class="row">
@@ -29,21 +30,24 @@
             <div class="row">
                 <div class="col-md-12" style="margin: 25px;">
                     <!-- 조각불르기 -->
-                    <th:block th:replace="ExtractSoft/ExtractSoft :: extractSoft"> 
+                    <th:block th:replace="ExtractSoft/ExtractSoft.html :: extractSoft"> 
 
                     </th:block>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12" style="margin-top: 45px;"> 
                     <!-- 조각불르기 -->
-                    베스트추출기록4개정도
+                    <th:block th:replace="chart/bestFive.html :: bestFive">
+
+                    </th:block>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12" style="height: 400px;">
-                    <!-- 조각불르기 -->
-                    방금추출 정보
+                    <th:block th:replace="chart/extractInfo.html :: extractInfo">
+                            
+                    </th:block>
                 </div>
                 <div class="col-md-12">
                     <div class="card" style="margin-right: 80px;">
@@ -56,9 +60,7 @@
                         </div>
                     </div>
                         <!-- 조각불르기 -->
-                        <!-- <th:block th:replace="chart/testChart.html :: charsetTest">
-                            
-                        </th:block> -->
+                       
                 </div>
             </div>
         </div>
@@ -74,7 +76,7 @@
         
 
 
-    <script src="/bootstrap/js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
 </body>
 
 </html>

@@ -12,21 +12,51 @@
 <body>
     <th:block th:fragment="charsetTest">
         <div style="height: 350px;">
+          <th:block th:if="${resultExtractDTO==null}">개쒸발</th:block>
             <canvas id="myChart"></canvas>
           </div>
+
+          <th:block th:if="${resultExtractDTO!=null}">
+            <input id="time2" type="hidden" th:value="${resultExtractDTO.extract.extractTime}">            
+            <input id="amount2" type="hidden" th:value="${resultExtractDTO.extract.extractAmount}">            
+            <input id="been2" type="hidden" th:value="${resultExtractDTO.extract.beenAmount}">      
+        </th:block>
           
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
           
           <script>
+            let time2;
+            let been2;
+            let amount2;
+            try {
+                time2 = document.getElementById("time2").value;
+                been2 = document.getElementById("been2").value;
+                amount2 = document.getElementById("amount2").value;
+                
+            } catch (Error) {
+                time2 = 0;
+                been2 =0;
+                amount2 =0;
+            }
             const ctx = document.getElementById('myChart');
+            
+         
           
             new Chart(ctx, {
               type: 'bar',
               data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['추출시간', '원두양', '추출량'],
                 datasets: [{
-                  label: '# of Votes',
-                  data: [11, 19, 3, 5, 2, 3],
+                  label: '파랑 of 최저점',
+                  data: [20, 14, 25],
+                  borderWidth: 1
+                },{
+                  label: '빨강 of 방금추출',
+                  data: [time2, been2, amount2],
+                  borderWidth: 1
+                },{
+                  label: '노랑 of 맥시멈',
+                  data: [31, 19, 35],
                   borderWidth: 1
                 }]
               },
@@ -38,11 +68,13 @@
                 }
               }
             });
+
+            
           </script>
            
 
              <!-- 내장부트스트랩 -->
-        <script src="/bootstrap/js"></script>
+             <script src="/bootstrap/js/bootstrap.js"></script>
         <!-- cdn차트js -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script> -->
     </th:block>

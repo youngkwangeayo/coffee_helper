@@ -14,4 +14,5 @@ import lombok.NoArgsConstructor;
 public class ExtractMent {
     private int id;
     private String ment;
+    private int equalsId;
 }

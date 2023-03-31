@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <div class="row">
+        <!-- 해더영역 -->
+        <th:block th:replace="layout/header.html :: headerFG"></th:block>
+    </div>    
+    
+
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="row">
+                <a class="navbar-brand text-center fs-1" href="/"><p class="fw-bold">coffeeHelper</p></a>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">추출시간</th>
+                <th scope="col">원두양</th>
+                <th scope="col">추출량</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:each="dtoList : ${pageDTO.dtoList}">
+                <tr>
+                    <!-- <th:block th:if="${}"> -->
+
+                        <td th:text="${dtoList.extractTime}"></td>
+                        <td th:text="${dtoList.beenAmount}"></td>
+                        <td th:text="${dtoList.extractAmount}"></td>
+                    <!-- </th:block> -->
+                </tr>
+
+            </th:block>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <nav aria-label="Page navigation example" style="margin: 20px;">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" th:onclick="prevPage([[${pageDTO.page}]],[[${pageDTO.prev}]])">Previous</a></li>
+                    <th:block th:with="start=${pageDTO.startPage}, end=${pageDTO.endPage}, page=${pageDTO.page}">
+                        <th:block th:each="pageNum : ${#numbers.sequence(start,end)}">
+                            <li class="page-item" th:if="${pageNum!=page}"><a class="page-link"  th:href="@{'/board?page='+${pageNum}}" th:text="${pageNum}"></a></li>
+                            <li class="page-item active" th:if="${pageNum==page}"><a class="page-link"  th:href="@{'/board?page='+${pageNum}}" th:text="${pageNum}"></a></li>
+                        </th:block>
+                    </th:block>
+                    <li class="page-item"><a class="page-link" th:onclick="nextPage([[${pageDTO.page}]],[[${pageDTO.next}]])">Next</a></li>
+                </ul>
+            </nav>
+            <div class="row">
+                <form class="d-flex" role="search" action="coffee22222" method="get" >
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="dd">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    
+    
+    
+
+
+    <div class="row" style="margin-top: 100px;">
+        <!-- 푸터영역 -->
+       <th:block th:replace="layout/footer.html :: footerFG">
+
+       </th:block>
+    </div>        
+        
+
+
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script>
+        function nextPage(pageNum,next){
+            if(next){
+                location.href="/board?page="+(pageNum+1);
+            }
+
+        }
+
+        function prevPage(pageNum,prev){
+            console.log(prev);
+            if(prev){
+                location.href="/board?page="+(pageNum-1);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
+

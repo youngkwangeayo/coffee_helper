@@ -1,4 +1,4 @@
-package com.example.coffee_helper.mapper;
+package com.example.coffee_helper.mapper.testMapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
