@@ -16,5 +16,7 @@ public interface ExtractSerive {
     
     int extractResultSave(ResponseResultExtractDTO resultExtractDTO,int userIdx);
 
-    
+    int putCoffeeMemo(ExtractDTO extractDTO);
+
+    int deleteExtractAndSaveMent(int extractId);
 }

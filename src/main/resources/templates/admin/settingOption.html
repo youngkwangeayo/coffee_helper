@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <style>
+        .sticky {
+             position: -webkit-sticky;
+            position: sticky;
+            top: 0;}
+        li, .topMargin{margin-top: 50px;}
+        html, body {
+            margin: 0;
+            height: 100%;
+            
+            overflow: hidden;}
+        .card-body{margin-right: 50px;}
+        select, input,span{margin-top: 35px;}
+        .card{margin: 0; border: hidden;}
+        .line{ border-bottom: solid;}
+        .side{border-right: solid; border-color: #c8c8c8;}
+    </style>
+</head>
+<body>
+    <div class="row">
+        <!-- 해더영역 -->
+        <!-- <th:block th:replace="layout/header.html :: headerFG"></th:block> -->
+    </div>    
+    
+
+    <div class="row" style="height: 100%;">
+        <div class="col-md-2" style="height: 100%;">
+           <div class="side" style="height: 100%;">
+             <th:block th:replace="layout/adminSideBar.html :: adminSideBar"></th:block>
+           </div>
+        </div>
+        <div class="col-md-10">
+            <div class="row" style="margin-top: 50px;">
+                <div class="col-md-4 offset-md-2">
+                    <a class="navbar-brand text-center fs-1" href="/"><p class="fw-bold">coffeeHelper</p></a>    
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-body" style="height: 800px; margin-top: 55px;">
+                        <div class="line">
+                            <h3 class="text-center">추출옵션 셋팅</h3>
+                            <p class="text-center">커피추출시 비교되는 기준값을 셋팅합니다. 예: 추출시간 : 오버(초과) =36, 추출시간 :로우(최저) =28</p>
+                        </div>
+                        <div>
+                            <p>현재 셋팅값</p>
+                        </div>
+                        <form action="/admin/settingOption" method="post">
+                            <input type="hidden" name="_method" value="put">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">추출시간</span>
+                                <span class="input-group-text" id="inputGroup-sizing-sm">over</span>
+                                <input class="form-control" type="number" placeholder="최대추출시간 입력" name="timeOvow" required="true">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">row</span>
+                                <input class="form-control" type="number" placeholder="최처추출시간 입력" name="timeRow" required="true">
+                            </div>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">추출량</span>
+                                <span class="input-group-text" id="inputGroup-sizing-sm">over</span>
+                                <input class="form-control" type="number" placeholder="최대추출량 입력" name="amountOver" required="true">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">row</span>
+                                <input class="form-control" type="number" placeholder="최저추출량 입력" name="amountRow" required="true">
+                            </div>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">원두량</span>
+                                <span class="input-group-text" id="inputGroup-sizing-sm">over</span>
+                                <input class="form-control" type="number" placeholder="최대원두량 입력" name="beenOver" required="true">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">row</span>
+                                <input class="form-control" type="number" placeholder="최저원두량 입력" name="beenRow" required="true">
+                            </div>
+                            
+                            
+                              <input type="submit"  class="form-control btn btn-secondary" value="셋팅 저장">
+                        </form>
+                        <div class="topMargin">
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <a class="btn btn-success" href="/admin/setting?check=0">기본셋팅값으로 전환</a>
+                                    <a class="btn btn-warning" href="/admin/setting?check=1">셋팅값 적용</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+    <div class="row" style="margin-top: 100px;">
+        <!-- 푸터영역 -->
+       <th:block th:replace="layout/footer.html :: footerFG">
+
+       </th:block>
+    </div>        
+        
+
+
+    <script src="/bootstrap/js/bootstrap.js"></script>
+   
+</body>
+
+</html>
+

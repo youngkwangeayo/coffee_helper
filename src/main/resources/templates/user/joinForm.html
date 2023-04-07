@@ -36,6 +36,10 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">닉네임&nbsp;&nbsp;&nbsp;</span>
                             <input type="text" name="username" placeholder="username" class="form-control" required="true">
                         </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <input type="text" name="name" placeholder="name" class="form-control" required="true">
+                        </div>
                        
                         <div class="input-group mb-3" style="margin-top: 30px;">
                             <input class="form-control btn btn-secondary" type="submit" value="회원가입 완료">
@@ -64,6 +68,18 @@
 
 
     <script src="/bootstrap/js/bootstrap.js"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        
+        let message = /*[[${resultMessage}]]*/
+        console.log(message);
+        
+        if(message!=null){
+            alert(message);
+        }
+    
+        /*]]>*/
+    </script>
 </body>
 
 </html>

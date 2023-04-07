@@ -25,40 +25,55 @@
         <div class="col-md-4"></div>
     </div>
     <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">추출한날짜</th>
-                <th scope="col">추출시간</th>
-                <th scope="col">원두양</th>
-                <th scope="col">추출량</th>
-                <th scope="col">설정글라인딩</th>
-                <th scope="col">추출된 결과</th>
-                <th scope="col">피드백멘트</th>
-                <th scope="col">입력한메모</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            <th:block th:if="${pageDTO.dtoList!=null}">
-                <th:block th:each="dtoList : ${pageDTO.dtoList}">
-                    <tr>
-                        <td th:text="${dtoList.extract.regDateTime}"></td>
-                        <td th:text="${dtoList.extract.extractTime}"></td>
-                        <td th:text="${dtoList.extract.beenAmount}"></td>
-                        <td th:text="${dtoList.extract.extractAmount}"></td>
-                        <td th:text="${dtoList.extract.grinding}"></td>
-                        <td>[[${dtoList.equals.time}]] ,[[${dtoList.equals.been}]] ,[[${dtoList.equals.amount}]]</td>
-                        <td th:text="${dtoList.ment}"></td>
-                        <td th:text="${dtoList.extract.memo}"></td>
-                    </tr>
+        <!-- <form method="get"> -->
+            <!-- <input type="hidden" name="_method" value="delete"> -->
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <input  class="btn btn-link" type="submit" value="삭제" onclick="testD()">
+                        <input  class="btn btn-link" type="submit" value="전송" th:formaction="@{#}" >
+                    </th>
+                    <th scope="col">추출한날짜</th>
+                    <th scope="col">추출시간</th>
+                    <th scope="col">원두양</th>
+                    <th scope="col">추출량</th>
+                    <th scope="col">설정글라인딩</th>
+                    <th scope="col">추출된 결과</th>
+                    <th scope="col">피드백멘트</th>
+                    <th scope="col">입력한메모</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:if="${pageDTO.dtoList!=null}">
+                    <th:block th:each="dtoList : ${pageDTO.dtoList}">
+                        <tr>
+                            <td class="text-center">
+                                <input type="checkbox" name="id" th:value="${dtoList.extract.id}">
+                                
+                            </td>
+                            <td th:text="${dtoList.extract.regDateTime}"></td>
+                            <td th:text="${dtoList.extract.extractTime}"></td>
+                            <td th:text="${dtoList.extract.beenAmount}"></td>
+                            <td th:text="${dtoList.extract.extractAmount}"></td>
+                            <td th:text="${dtoList.extract.grinding}"></td>
+                            <td>[[${dtoList.equals.time}]] ,[[${dtoList.equals.been}]] ,[[${dtoList.equals.amount}]]</td>
+                            <td th:text="${dtoList.ment}"></td>
+                            <th:block th:if="${dtoList.extract.memo!=null AND dtoList.extract.memo!=''}">
+                                <td><a  class="text-success" href="#" th:text="${dtoList.extract.memo}" th:onclick="putMemo([[${dtoList.extract.id}]])"></a></td>
+                            </th:block>
+                            <th:block th:if="${dtoList.extract.memo==null || dtoList.extract.memo==''}">
+                                <td><a href="#" th:onclick="putMemo([[${dtoList.extract.id}]])">메모 입력</a></td>
+                            </th:block>
+                        </tr>
+                    </th:block>
+                    
                 </th:block>
                 
-            </th:block>
+
             
-
-        
-        </tbody>
-
+            </tbody>
+        <!-- </form> -->
     </table>
     <div class="row">
         <div class="col-md-4"></div>
@@ -68,7 +83,7 @@
                     <li th:if="${pageDTO.type==null}" class="page-item"><a class="page-link" th:onclick="prevPage([[${pageDTO.page}]],[[${pageDTO.prev}]])">Previous</a></li>
                     <!-- 검색이 있을시 -->
                     <li th:if="${pageDTO.type!=null}" class="page-item">
-                        <a class="page-link" th:onclick="prevPage([[${pageDTO.page}]],[[${pageDTO.prev}]],[[${pageDTO.type}]],[[${pageDTO.keyword}]])">Previous</a>
+                        <a class="page-link" th:onclick="prevPage([[${pageDTO.page}]],[[${pageDTO.prev}]],[[${pageDTO.type}]],[[${pageDTO.keyword}]],[[${pageDTO.beforeFrom}]],[[${pageDTO.beforeTo}]])">Previous</a>
                     </li>
                     <th:block th:with="start=${pageDTO.startPage}, end=${pageDTO.endPage}, page=${pageDTO.page}">
                         <th:block th:each="pageNum : ${#numbers.sequence(start,end)}">
@@ -79,10 +94,10 @@
                             <!-- 검색결과가 있을시 -->
                             <th:block th:if="${pageDTO.type!=null}">
                                 <li class="page-item" th:if="${pageNum!=page}">
-                                    <a class="page-link"  th:href="@{'/user/coffee?page='+${pageNum}+'&type='+${pageDTO.type}+'&keyword='+${pageDTO.keyword}}" th:text="${pageNum}"></a>
+                                    <a class="page-link"  th:href="@{'/user/coffee?page='+${pageNum}+'&type='+${pageDTO.type}+'&keyword='+${pageDTO.keyword}+'&beforeFrom='+${pageDTO.beforeFrom}+'&beforeTo='+${pageDTO.beforeTo}}" th:text="${pageNum}"></a>
                                 </li>
                                 <li class="page-item active" th:if="${pageNum==page}"> <!-- 해당페이지 파랑색표시 위해 -->
-                                    <a class="page-link"  th:href="@{'/user/coffee?page='+${pageNum}+'&type='+${pageDTO.type}+'&keyword='+${pageDTO.keyword}}" th:text="${pageNum}"></a>
+                                    <a class="page-link"  th:href="@{'/user/coffee?page='+${pageNum}+'&type='+${pageDTO.type}+'&keyword='+${pageDTO.keyword}+'&beforeFrom='+${pageDTO.beforeFrom}+'&beforeTo='+${pageDTO.beforeTo}}" th:text="${pageNum}"></a>
                                 </li>
                             </th:block>
                         </th:block>
@@ -90,19 +105,19 @@
                     <li th:if="${pageDTO.type==null}" class="page-item"><a class="page-link" th:onclick="nextPage([[${pageDTO.page}]],[[${pageDTO.next}]])">Next</a></li>
                     <!-- 검색이 있을시 -->
                     <li th:if="${pageDTO.type!=null}" class="page-item">
-                        <a class="page-link" th:onclick="nextPage([[${pageDTO.page}]],[[${pageDTO.next}]],[[${pageDTO.type}]],[[${pageDTO.keyword}]])">Next</a>
+                        <a class="page-link" th:onclick="nextPage([[${pageDTO.page}]],[[${pageDTO.next}]],[[${pageDTO.type}]],[[${pageDTO.keyword}]],[[${pageDTO.beforeFrom}]],[[${pageDTO.beforeTo}]])">Next</a>
                     </li>
                 </ul>
             </nav>
             <div class="row">
                 <form class="form-group" role="search" action="/user/coffee" method="get" >
                     <input type="hidden" name="type" value="memo">
-                    <!-- <div class="input-group">
+                    <div class="input-group">
                         <span class="input-group-text" id="inputGroup-sizing-sm">시작날짜</span>
-                        <input class="form-control me-2" type="date" name="from">
+                        <input class="form-control me-2" type="date" name="beforeFrom" th:value="${pageDTO.beforeFrom}">
                         <span class="input-group-text" id="inputGroup-sizing-sm">끝 날짜</span>
-                        <input class="form-control me-2" type="date" name="to">
-                    </div> -->
+                        <input class="form-control me-2" type="date" name="beforeTo" th:value="${pageDTO.beforeTo}">
+                    </div>
                     <div class="input-group">
                         <span class="input-group-text" id="inputGroup-sizing-sm">메모검색</span>
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" th:value="${pageDTO.keyword}">
@@ -131,10 +146,19 @@
 
     <script src="/bootstrap/js/bootstrap.js"></script>
     <script>
-        function nextPage(pageNum,next,type,keyword){
+        let xhr = new XMLHttpRequest();
+        let url = "/user/coffee";
+
+        xhr.onload= function(){
+                
+                alert("tqtq");
+                location.reload();
+        }
+        function nextPage(pageNum,next,type,keyword,beforeFrom,beforeTo){
             if(next){
                 if(type!=null){
-                    location.href="/user/coffee?page="+(pageNum+1)+"&type="+type+"&keyword="+keyword;
+                    location.href="/user/coffee?page="+(pageNum+1)+"&type="+type+"&keyword="+keyword+"&beforeFrom="+beforeFrom+"&beforeTo="+beforeTo;
+                    //location.href="/user/coffee?page="+(pageNum+1)+"&type="+type+"&keyword="+keyword+"&beforeFrom="+beforeFrom+"&beforeTo="+beforeTo;
                     return;
                 }
                 location.href="/user/coffee?page="+(pageNum+1);
@@ -142,17 +166,75 @@
 
         }
 
-        function prevPage(pageNum,prev,type,keyword){
+        function prevPage(pageNum,prev,type,keyword,beforeFrom,beforeTo){
             console.log(prev);
             if(prev){
                 if(type!=null){
-                    location.href="/user/coffee?page="+(pageNum-1)+"&type="+type+"&keyword="+keyword;
+                    location.href="/user/coffee?page="+(pageNum-1)+"&type="+type+"&keyword="+keyword+"&beforeFrom="+beforeFrom+"&beforeTo="+beforeTo;
                     return;
                 }
                 location.href="/user/coffee?page="+(pageNum-1);
             }
         }
 
+        function putMemo(id){
+            let memo= prompt("메모수정");
+            let c = confirm("저장하시겠습니까?");
+            let memoInfo = {
+                id : id,
+                memo: memo
+            };
+
+            if(!c){
+                return;
+            }
+            url=url+"?id="+id+"&memo="+memo;
+            // url= url+"/"+id;
+            xhr.open("PUT",url,true);
+            xhr.setRequestHeader("Content-Type","application/json;charset=utf-8")
+            xhr.send(memoInfo);
+            
+            xhr.onload = function(){
+                    location.reload();
+                }
+        }
+        
+        function testD(){
+            
+            let query ='input[name="id"]:checked';
+            let arr = document.querySelectorAll(query);
+            let id= new Array; 
+            let count = 0;
+            arr.forEach((el) => {
+                id[count] =el.value;
+                count++;
+            })
+            if(id==null || id==""){
+                alert("최소 한개 이상 선택해주세요");
+                return;
+            }
+
+            count =0;
+            let urlId= "";
+            arr.forEach((el => {
+                if(count==0){
+                    urlId +="?id="+el.value;
+                }else{
+                    urlId +="&id="+el.value;
+                }
+                count++;
+            }))
+            console.log(urlId);
+            console.log(id);
+
+            xhr.open("delete",url+urlId,true);
+            xhr.setRequestHeader("Content-Type","application/json;charset=utf-8");
+            xhr.send(JSON.stringify(id));
+            xhr.onload= function(){
+                    alert(this.responseText);
+                    location.reload();
+            }
+        }
 
     </script>
 </body>

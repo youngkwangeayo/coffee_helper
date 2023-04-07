@@ -1,11 +1,13 @@
 package com.example.coffee_helper.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.coffee_helper.entity.Extract;
 import com.example.coffee_helper.entity.ExtractResultMent;
@@ -37,5 +39,18 @@ public interface ExtractMapper {
     })
     int saveExtractResultMent(ExtractResultMent extractResultMent);
 
+
+    @Update("update extract set memo=#{memo} where e_id=#{id}")
+    int putCoffeeMemo(Extract extract);
+
+    @Select("select u_id from extract where e_id=#{id}")
+    int findRegisterUser(int id);
     
+    @Delete("delete from extract_save_ment where e_id=#{extractId}")
+    int deleteSaveMentToId(int extractId);
+
+
+    @Delete("delete from extract where e_id=#{extractId};")
+    int deleteExtractToId(int extractId);
+
 }

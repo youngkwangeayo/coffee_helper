@@ -32,6 +32,11 @@
             <trim prefix="AND">
                 extract.memo like concat('%',#{requestDTO.keyword},'%')
             </trim>
+          </if>
+          <if test="requestDTO.from!=null and requestDTO.to!=null">
+            <trim prefix="AND">
+                reg_date between #{requestDTO.from} and #{requestDTO.to}
+            </trim>
           </if>  
     </sql>
 
