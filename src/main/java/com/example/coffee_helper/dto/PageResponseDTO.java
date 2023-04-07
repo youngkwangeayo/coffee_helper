@@ -24,6 +24,9 @@ public class PageResponseDTO<E> {
     private Boolean prev;
     private Boolean next;
 
+    private String beforeFrom;
+    private String beforeTo;
+
     private LocalDate from;
     private LocalDate to;
 
@@ -44,9 +47,10 @@ public class PageResponseDTO<E> {
 
         this.prev = this.page>1;
         this.next = this.total>this.page*10;
-
-        this.from = requestDTO.getFrom();
-        this.to = requestDTO.getTo();
+        
+        this.beforeFrom = requestDTO.getBeforeFrom();
+        this.beforeTo=requestDTO.getBeforeTo();
+        
 
         this.type = requestDTO.getType();
         this.keyword = requestDTO.getKeyword();

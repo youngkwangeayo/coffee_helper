@@ -20,6 +20,8 @@ public class UserDTO {
     private String role;
     private String username;
     private String nickname;
+    private String name;
+
 
     public UserDTO nameToRole(){
         UserDTO userDTO = UserDTO.builder().username(this.username).role(this.role).build();

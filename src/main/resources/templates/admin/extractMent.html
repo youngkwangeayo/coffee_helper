@@ -21,7 +21,8 @@
         .card-body{margin-right: 50px;}
         select, input,span{margin-top: 35px;}
         .card{margin: 0; border: hidden;}
-        .line{border: solid;}
+        .line{ border-bottom: solid;}
+        .side{border-right: solid; border-color: #c8c8c8;}
     </style>
 </head>
 <body>
@@ -33,7 +34,7 @@
 
     <div class="row" style="height: 100%;">
         <div class="col-md-2" style="height: 100%;">
-           <div class="line" style="height: 100%;">
+           <div class="side" style="height: 100%;">
              <th:block th:replace="layout/adminSideBar.html :: adminSideBar"></th:block>
            </div>
         </div>

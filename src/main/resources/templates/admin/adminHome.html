@@ -17,6 +17,10 @@
             margin: 0;
             height: 100%;
             overflow: hidden;}
+        .line{ border-bottom: solid; margin-top: 60px;}
+        .side{border-right: solid; border-color: #c8c8c8;}
+        .mgtop{margin-top: 60px;}
+        .wit100{width: 100%;}
     </style>
 </head>
 <body>
@@ -28,21 +32,135 @@
 
     <div class="row" style="height: 100%;">
         <div class="col-md-2" style="height: 100%;">
-           <div class="card" style="height: 100%;">
+           <div class="side" style="height: 100%;">
              <th:block th:replace="layout/adminSideBar.html :: adminSideBar"></th:block>
            </div>
         </div>
-        <div class="col-md-4 offset-md-2">
-            <div class="row" style="margin-top: 50px;">
-                <a class="navbar-brand text-center fs-1" href="/"><p class="fw-bold">coffeeHelper [[${resultMessage}]]</p></a>
-            </div>
-            <div class="card" style="margin-top: 25px;">
-                <div class="card-body">
-                    
+        <div class="col-md-10">
+            <div class="col-md-4 offset-md-2">
+                <div class="row" style="margin-top: 50px;">
+                    <a class="navbar-brand text-center fs-1" href="/"><p class="fw-bold">coffeeHelper [[${resultMessage}]]</p></a>
                 </div>
-            </div>        
+                
+            </div>
+            <div class="col-md-4"></div>
+            <div class="row">
+                <div class="line">
+                    <h3 class="text-center" style="margin-bottom: 35px;">관리자페이지</h3>
+                    <th:block th:if="${!checkSetting}">
+                        <h4 class="text-center" disabled style="color : rgb(255, 255, 255); background-color: #a0a0a0;">현제 기본셋팅 적용</h4>
+                    </th:block>
+                    <th:block th:if="${checkSetting}">
+                        <h4 class="text-center" disabled style="color : rgb(255, 255, 255); background-color: #a0a0a0;">현제 변경셋팅 적용</h4>
+                    </th:block>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="wit100">
+                            <div class="row">
+                                <div class="col-md-3">
+                                        <p class="btn btn-outline-success" disabled style="color : rgb(10, 77, 27);">기본값</p>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>조건</th>
+                                                    <th>추출량</th>
+                                                    <th>추출시간</th>
+                                                    <th>원두량</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th>로우</th>
+                                                    <th:blcok th:each="default : ${defaultConditions}">
+                                                        <th:block th:if="${default.check=='row'}">
+                                                            <td>[[${default.condition}]]</td>
+                                                        </th:block>
+                                                    </th:blcok>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <th>오버</th>
+                                                    <th:blcok th:each="default : ${defaultConditions}">
+                                                        <th:block th:if="${default.check=='over'}">
+                                                            <td>[[${default.condition}]]</td>
+                                                        </th:block>
+                                                    </th:blcok>
+                                                    
+                                                </tr>     
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card" style="margin-top: 60px;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                    <a class="btn btn-outline-success" href="/admin/settingOption" disabled style="color : rgb(10, 77, 27);">셋팅된값</a>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>조건</th>
+                                                <th>추출량</th>
+                                                <th>추출시간</th>
+                                                <th>원두량</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>로우</th>
+                                                <th:blcok th:each="setting : ${settingConditions}">
+                                                    <th:block th:if="${setting.check=='row'}">
+                                                        <td>[[${setting.condition}]]</td>
+                                                    </th:block>
+                                                </th:blcok>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th>오버</th>
+                                                <th:blcok th:each="setting : ${settingConditions}">
+                                                    <th:block th:if="${setting.check=='over'}">
+                                                        <td>[[${setting.condition}]]</td>
+                                                    </th:block>
+                                                </th:blcok>
+                                                
+                                            </tr>     
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="mgtop">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <a class="btn btn-success" href="/admin/setting?check=0">기본셋팅값으로 전환</a>
+                        <a class="btn btn-warning" href="/admin/setting?check=1">셋팅값 적용</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-md-4"></div>
+        
     </div>
     
 

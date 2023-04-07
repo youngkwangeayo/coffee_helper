@@ -17,4 +17,6 @@ public interface ExtractBoardService {
     PageResponseDTO<?> findBoardList(PageRequestDTO requestDTO,int userId);
 
     List<?> findBList(PageRequestDTO requestDTO,int userId);
+
+    int deleteExtractToId(int[] extractId);
 }

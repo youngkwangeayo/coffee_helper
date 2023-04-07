@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.system.OutputCaptureRule;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.Assert;
 
 import com.example.coffee_helper.controller.MainController;
@@ -27,13 +28,14 @@ import com.example.coffee_helper.entity.ChartBestFive;
 import com.example.coffee_helper.entity.Extract;
 import com.example.coffee_helper.entity.ExtractMent;
 import com.example.coffee_helper.entity.ExtractResultMent;
+import com.example.coffee_helper.entity.SettingCondition;
 import com.example.coffee_helper.entity.TestC;
 import com.example.coffee_helper.entity.Tt;
 import com.example.coffee_helper.extractSoftware.ExtractSoftService;
-import com.example.coffee_helper.mapper.BestConditionMapper;
 import com.example.coffee_helper.mapper.ExtractMapper;
 import com.example.coffee_helper.mapper.board.ExtractBoardMapper;
 import com.example.coffee_helper.mapper.chart.ChartMapper;
+import com.example.coffee_helper.mapper.condition.BestConditionMapper;
 import com.example.coffee_helper.mapper.member.UserMapper;
 import com.example.coffee_helper.service.BestConditionService;
 import com.example.coffee_helper.service.ExtractFeedbackServiceImpl;
@@ -57,6 +59,9 @@ import com.example.coffee_helper.entity.User;
 class CoffeeHelperApplicationTests {
 
 	
+	@Autowired
+	BCryptPasswordEncoder encoder;
+
 
 	@Autowired
 	BestConditionMapper conditionMapper;
@@ -107,8 +112,11 @@ class CoffeeHelperApplicationTests {
 
 	@Test
 	void condition(){
-		List<BestCondition>list = conditionMapper.findAllCondition();
-		assertNotNull(list);
+		List<BestCondition>list = conditionMapper.findSettingCondition();
+		assertNull(list);
+		// assertNotNull(list);
+		// Boolean d =conditionMapper.checkSetting();
+		// assertNull(d);
 	}
 	@Test
 	void conditionServiceTest(){
@@ -292,6 +300,31 @@ class CoffeeHelperApplicationTests {
 	void pMapperTest(){
 		// boardMapper.findExtractInfoOfUser(null, 0)
 
+	}
+
+	@Test
+	void settingTest(){
+		SettingCondition s = SettingCondition.builder()
+		.amountOver(40).amountRow(32)
+		.timeOver(36).timeRow(28)
+		.beenOver(22).beenRow(12).build();
+
+		conditionMapper.settingOptionChang(s);
+		
+
+	}
+
+	@Test
+	void joinTest(){
+		User user = User.builder()
+		.email("fake2@fak2")
+		.password(encoder.encode("asf"))
+		.username("임영광")
+		.build();
+		userMapper.findByUserEmail(user.getEmail());
+		userMapper.findByUsername(user.getUsername());
+		userMapper.join(user);
+		
 	}
 
 }//classEnd

@@ -27,6 +27,8 @@ public class ExtractServiceImpl implements ExtractSerive {
     ExtractMapper extractMapper;
 
 
+
+
     //익스트렉트 정보 저장
     @Override
     public int extractSave(ExtractDTO extractDTO,int userId) {
@@ -67,58 +69,37 @@ public class ExtractServiceImpl implements ExtractSerive {
         return extractMapper.saveExtractResultMent(saveResultMent);
         
     }
+
+
+    @Override
+    public int putCoffeeMemo(ExtractDTO extractDTO) {
+        Extract extract = toEntity(extractDTO);
+        int result = extractMapper.putCoffeeMemo(extract);
+
+        return result;
+    }
     
-    /*
-     * 
-     *  @Override
-    public int extractSave(ExtractDTO extractDTO,int userId) {
-        extractDTO.setUserId(userId);
-        Extract extract = modelMapper.map(extractDTO, Extract.class);
-        int result=extractMapper.saveMachineExtract(extract);
+    private Extract toEntity(ExtractDTO dto){
+        Extract e = modelMapper.map(dto, Extract.class);
+
+        return e;
+    }
+
+    //-1이면 멘트 삭제 오류 -2면 추출삭제오류
+    @Override
+    public int deleteExtractAndSaveMent(int extractId) {
+        int result =0;
+        result = extractMapper.deleteSaveMentToId(extractId);
         if(result<0){
             return -1;
         }
-        
-        return extract.getId();
-    }
-
-    @Override
-    public int extractInfoSave(HashMap<Object, Object> extractInfo,int userIdx) {
-        ExtractDTO extractDTO = null;
-        int extractId =0;
-        int result =0;
-
-        for(Object o : extractInfo.keySet()){
-            if(o.equals("extract")){
-                extractDTO = modelMapper.map(extractInfo.get(o),ExtractDTO.class);
-                extractId = extractSave(extractDTO, userIdx);
-            }else{                                 
-                List<ExtractMentDTO> ments = (List<ExtractMentDTO>)extractInfo.get(o);
-                for(int i=0; i < ments.size(); i++) {
-                    ExtractMentDTO mentDTO = modelMapper.map(ments.get(i),ExtractMentDTO.class);
-                    System.out.println(mentDTO);
-                    System.out.println(mentDTO.getId());
-                    ExtractSaveMentDTO saveMentDTO = ExtractSaveMentDTO.builder()
-                        .extractId(extractId)
-                        .mentId(mentDTO.getId())
-                        .build();
-                    result=extractSaveMent(saveMentDTO);
-                }
-            }
-            
+        result = extractMapper.deleteExtractToId(extractId);
+        if(result<0){
+            return -2;
         }
-        
+
         return result;
     }
-
-    @Override
-    public int extractSaveMent(ExtractSaveMentDTO saveMentDTO) {
-        ExtractSaveMent saveMent = modelMapper.map(saveMentDTO, ExtractSaveMent.class);
-        return extractMapper.saveExtractSaveMent(saveMent);
-        
-    }
-     * 
-     */
 
 }
 

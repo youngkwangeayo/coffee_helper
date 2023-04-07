@@ -26,14 +26,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         // TODO Auto-generated method stub
-        System.out.println(super.loadUser(userRequest).getName());
-        System.out.println(super.loadUser(userRequest));
-        System.out.println("어트리뷰트"+super.loadUser(userRequest).getAttributes().get("name"));
-        System.out.println("일반"+super.loadUser(userRequest));
-        System.out.println("레지스터리 겟 레지스터리 아이디"+userRequest.getClientRegistration().getRegistrationId());
         
         String email= (String)super.loadUser(userRequest).getAttributes().get("email");
-        System.out.println(email);
         User user = userMapper.findByUserEmail(email);
         if(user==null){
             
@@ -42,7 +36,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             user = User.builder()
                 .email(email)
                 .role("ROLE_USER")
-                .username((String)super.loadUser(userRequest).getAttributes().get("name"))
+                .username((String)super.loadUser(userRequest).getAttributes().get("name")+super.loadUser(userRequest).getAttributes().get("sub"))
+                .name((String)super.loadUser(userRequest).getAttributes().get("name"))
                 .build();
             userMapper.join(user);
         }
@@ -52,3 +47,10 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     }
     
 }
+        // System.out.println(super.loadUser(userRequest).getName());
+        // System.out.println(super.loadUser(userRequest));
+        // System.out.println("어트리뷰트"+super.loadUser(userRequest).getAttributes().get("name"));
+        // System.out.println("일반"+super.loadUser(userRequest));
+        // System.out.println("레지스터리 겟 레지스터리 아이디"+userRequest.getClientRegistration().getRegistrationId());
+        // System.out.println("어트리뷰트"+super.loadUser(userRequest).getAttributes().get("sub"));
+        // System.out.println(email);

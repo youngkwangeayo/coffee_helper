@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.coffee_helper.mapper.condition.BestConditionMapper">
+        <select id="settingOptionChang">
+            UPDATE setting_condition SET
+             sc_condition = CASE sc_id WHEN 1 THEN #{amountRow} ELSE sc_condition END,
+             sc_condition = CASE sc_id WHEN 3 THEN #{amountOver} ELSE sc_condition END,
+             sc_condition = CASE sc_id WHEN 4 THEN #{timeRow} ELSE sc_condition END,
+             sc_condition = CASE sc_id WHEN 6 THEN #{timeOver} ELSE sc_condition END,
+             sc_condition = CASE sc_id WHEN 7 THEN #{beenRow} ELSE sc_condition END,
+             sc_condition = CASE sc_id WHEN 9 THEN #{beenOver} ELSE sc_condition END
+             WHERE sc_id IN (1,3,4,6,7,9);
+        </select>
+<!-- 1=어마운트 로우 3=어마운트 오버 4=타임로우,6은 타임오버, 7=빈로우,9빈오버 -->
+
+</mapper> 

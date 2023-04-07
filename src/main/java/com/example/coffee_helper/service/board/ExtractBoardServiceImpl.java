@@ -1,5 +1,6 @@
 package com.example.coffee_helper.service.board;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,7 @@ import com.example.coffee_helper.dto.PageResponseDTO;
 import com.example.coffee_helper.dto.ResponseExtractInfoDTO;
 import com.example.coffee_helper.entity.Extract;
 import com.example.coffee_helper.mapper.board.ExtractBoardMapper;
+import com.example.coffee_helper.service.ExtractSerive;
 import com.example.coffee_helper.service.member.user.UserServiceImpl;
 
 @Service
@@ -22,6 +24,8 @@ public class ExtractBoardServiceImpl implements ExtractBoardService {
     @Autowired
     ExtractBoardMapper boardMapper;
 
+    @Autowired
+    ExtractSerive extractSerive;
     
     
     ModelMapper modelMapper = new ModelMapper();
@@ -53,6 +57,7 @@ public class ExtractBoardServiceImpl implements ExtractBoardService {
         //테이블합친거에 추출정보
         System.out.println(userId);
         List<ExtractInfoDTO> extractInfoList = boardMapper.findExtractInfoOfUser(requestDTO,userId);
+        System.out.println(requestDTO);
         int total = boardMapper.boardCountOfUser(requestDTO,userId);
 
         PageResponseDTO<ExtractInfoDTO> responseDTO = new PageResponseDTO<>(requestDTO,extractInfoList,total);
@@ -69,5 +74,25 @@ public class ExtractBoardServiceImpl implements ExtractBoardService {
         .collect(Collectors.toList());
         return list;
     }
+
+    //-1이면 멘트 삭제 오류 -2면 추출삭제오류
+    @Override
+    public int deleteExtractToId(int[] extractId) {
+        int result =0;
+        for(int i=0; i<extractId.length; i++){
+            // int extractIdx = Integer.parseInt(extractId[i]);
+            result=extractSerive.deleteExtractAndSaveMent(extractId[i]);
+            if(result<0){
+                return result;
+            }
+        }
+
+        return result;
+    }
+    
+
+    
+
+
     
 }
