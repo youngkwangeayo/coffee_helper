@@ -61,6 +61,10 @@
       <img width="501" alt="커피헬퍼 erd" src="https://user-images.githubusercontent.com/120706327/230838929-5aa0b7c8-4903-41ef-a617-d0a0b2f9bef7.png">      
 </ul>  
 
-<p> 세로선 왼편은 확장성을 위해 넣어두었습니다. </p>
+<p> 세로선 우측은 확장성을 위해 넣어두었습니다. </p>
+<hr>    
+<ul>
+  <li></li>
+</ul>  
 
 
