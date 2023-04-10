@@ -1,5 +1,6 @@
 # coffee_helper
 
+커피추출 피드백, 추출커피 관리 웹어플리케이션
 
 <!-- <table>
          <thead>
