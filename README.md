@@ -23,13 +23,13 @@
               </ul>
             <li> <h4> Frontend </h4></li>
             <li> <h4> Database </h4></li>
-              <ul>
+              
                   <li>mysql</li>
-              </ul>
+              
             <li> <h4> server </h4></li>
-               <ul>
+             
                 <li>tomcat</li>
-              </ul>
+              
  
 </ul>
 <hr>
