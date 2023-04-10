@@ -22,10 +22,7 @@
             <li> <h4> Database </h4></li>
             <li> <h4> server </h4></li>
 
-         </ul>
-      
-      
-     </ul> 
+ 
 </ul>
 <hr>
 
