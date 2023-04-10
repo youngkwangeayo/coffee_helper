@@ -12,7 +12,16 @@
             </p>
          </li>
       </ul>
-   <li> 프로젝트 정 </li>
+   <li> <h4> 프로젝트 정보 </h4> </li>
+      <ul>
+        <li> springboot maven </li>
+        <li> <h4> 스킬 </h4></li>
+          <ul>
+            <li>ff</li>
+            <li>ff</li>
+            <li>ff</li>
+          </ul>  
+      </ul>
 </ul>
 <hr>
 
