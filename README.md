@@ -1,9 +1,10 @@
 # coffee_helper
-1인프로젝트
+
+<h5>1인프로젝트<h5>
 
 
 <ul>
-  <li> <h4>프로젝트 소개</h4> </li>
+  <li> <h3>프로젝트 소개</h3> </li>
       <ul>
         <li>
             <p>
@@ -19,12 +20,11 @@
           <li>본인 커피추출 정보와 피드백을 관리 할수있어 기록에 용이하다.</li>
           <li>자동추출 소프트웨어의 알고리즘 처리로 터무니없는 가상추출이 없다</li>   
           <li>관리자 모드에서 좋은추출정보의 기준을 수정 가능하다</li>
-          
-       </ul> 
+         </ul> 
       </ul>
    <li> <h4> 프로젝트 정보 </h4> </li>
      <ul>
-       <li> spring boot maven </li>
+       <li> SpringBoot Maven </li>
           <li> <h4> Backend </h4></li>
               <ul>
                  <li>Java</li>
@@ -53,12 +53,14 @@
            </ul>
     </ul>
 </ul>
-
-    
-         
-            
-           
- 
 <hr>
+<ul>
+  <li><h3>ERD<h3> <li>
+  <ul>
+    <li><img width="501" alt="커피헬퍼 erd" src="https://user-images.githubusercontent.com/120706327/230838929-5aa0b7c8-4903-41ef-a617-d0a0b2f9bef7.png"><li>
+    <p> 세로선 왼편은 확장성을 위해 넣어두었습니다. </p>
+  </ul>  
+</ul>  
+  
 
 
