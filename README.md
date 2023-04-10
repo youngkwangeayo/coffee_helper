@@ -14,16 +14,32 @@
       </ul>
    <li> <h4> 프로젝트 정보 </h4> </li>
      <ul>
-       <li> springboot maven </li>
+       <li> spring boot maven </li>
           <li> <h4> Backend </h4></li>
+              <ul>
+                 <li>Java</li>
+                 <li>Spring Security</li>
+                 <li>Mybatis</li>
+                 <li>oAuth2</li>
+                 <li>RestApi</li>
+              </ul>
           <li> <h4> Frontend </h4></li>
+              <ul>
+                 <li>Html</li>
+                 <li>Css</li>
+                 <li>JavaScript</li>
+                 <li>ThymeLeaf</li>
+                 <li>BootStrap</li>
+                 <li>Chart.js</li>
+                 <li>Ajax</li>
+              </ul>    
           <li> <h4> Database </h4></li>
             <ul>
-               <li>mysql</li>
+               <li>MySQL</li>
             </ul>
           <li> <h4> server </h4></li>
             <ul>
-              <li>tomcat</li>
+              <li>TomCat</li>
            </ul>
     </ul>
 </ul>
@@ -35,9 +51,4 @@
  
 <hr>
 
-프로젝트 정보 springboot maven 
-프론트 html, css, javascript thymeleaf, ajax, chart.js , bootstrap
-백앤드 springboot , spring security , mybatis ,Interceptor , oauth , restApi
-데이터베이스 mysql
-서버 tomcat
 
