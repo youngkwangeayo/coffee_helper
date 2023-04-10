@@ -56,7 +56,7 @@
 <hr>
 <ul>
   <li><h3>ERD<h3> <li>
-  </ul>
+  <ul>
     <li><img width="501" alt="커피헬퍼 erd" src="https://user-images.githubusercontent.com/120706327/230838929-5aa0b7c8-4903-41ef-a617-d0a0b2f9bef7.png"><li>
   </ul>  
 </ul>  
