@@ -14,7 +14,7 @@
       </ul>
    <li> <h4> 프로젝트 정보 </h4> </li>
      <ul>
-                <li> springboot maven </li>
+       <li> springboot maven </li>
         <li> <h4> 스킬 </h4></li>
           <ul>
             <li> <h4> Backend </h4></li>
