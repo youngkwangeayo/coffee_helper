@@ -13,7 +13,7 @@
          </li>
       </ul>
    <li> <h4> 프로젝트 정보 </h4> </li>
-     2 <ul>
+     <ul>
                 <li> springboot maven </li>
         <li> <h4> 스킬 </h4></li>
           <ul>
@@ -24,16 +24,16 @@
             
             <li> <h4> Database </h4></li>
                
-                  <li> mysql </li>
+                
                
             <li> <h4> server </h4></li>
              
-                  <li> tomcat </li>
+                
                
         
         
          
-     2 </ul>
+     </ul>
       
       
       
