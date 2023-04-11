@@ -133,7 +133,7 @@
         <h4>차트에 대한 설</h4>
          <img alt="차트설명" src="https://user-images.githubusercontent.com/120706327/231076543-4aced39f-902c-4665-a336-6e501918fe10.png">
         <br>
-       </li>       
+       </li>
     </ul>
 </ul>    
     
