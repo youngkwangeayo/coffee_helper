@@ -147,12 +147,13 @@
        <hr>
         <li>     
           <h4>관리자 메인 페이지</h4>
-           <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231110515-f712882a-1842-440f-bc1d-c45ab45ad121.png">
+           <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231111068-ff2c7d21-9708-468c-a672-ebcc865903ec.png">
           <br>
        </li>  
     </ul>
 </ul>    
     
+
 
 
 
