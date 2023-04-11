@@ -116,14 +116,14 @@
     <ul>
         <li>
           <h4>메인페이지</h4>
-          <img alt="커피헬퍼 메인 홈" src="https://user-images.githubusercontent.com/120706327/231041997-91969cb8-a26b-4540-b477-1b752aa1c359.png">
+          <img width="1275" alt="커피헬퍼메인페이지" src="https://user-images.githubusercontent.com/120706327/231067033-41ab8510-f5de-4142-be71-63ac59ecb8e7.png">
           <br>
         </li>
         <li>
           <h4>커피헬퍼의 메인기능<h4>
           <img alt="메인기능 JonList" src="https://user-images.githubusercontent.com/120706327/231065638-41c53d47-167e-42aa-92d8-8bf3ba793295.png">
             <br>
-      </li>        
+       </li>        
     </ul>
 </ul>    
     
