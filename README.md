@@ -118,8 +118,10 @@
           메인페이지
           <img alt="커피헬퍼 메인 홈" src="https://user-images.githubusercontent.com/120706327/231041997-91969cb8-a26b-4540-b477-1b752aa1c359.png">
         </li>
-        <li>커피헬퍼의 메인기능</li>
-         <img alt="https://user-images.githubusercontent.com/120706327/231064756-36924e30-6e1b-4bde-adeb-21321d0d1378.png>
+        <li>
+          커피헬퍼의 메인기능
+          <img alt="메인기능 JonList" src="https://user-images.githubusercontent.com/120706327/231065638-41c53d47-167e-42aa-92d8-8bf3ba793295.png">
+      </li>        
     </ul>
 </ul>    
     
