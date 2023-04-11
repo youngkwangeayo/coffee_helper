@@ -34,7 +34,7 @@
                  <li>Java</li>
                  <li>Spring Security</li>
                  <li>Mybatis</li>
-                 <li>oAuth2</li>
+                 <li>OAuth2</li>
                  <li>RestApi</li>
               </ul>
           <li> <h4> Frontend </h4></li>
@@ -45,7 +45,7 @@
                  <li>ThymeLeaf</li>
                  <li>BootStrap</li>
                  <li>Chart.js</li>
-                 <li>Ajax</li>
+                 <li>AJax</li>
               </ul>    
           <li> <h4> Database </h4></li>
             <ul>
@@ -130,10 +130,26 @@
         <br>
        </li>  
        <li>
-        <h4>차트에 대한 설</h4>
+        <h4>차트에 대한 설명</h4>
          <img alt="차트설명" src="https://user-images.githubusercontent.com/120706327/231076543-4aced39f-902c-4665-a336-6e501918fe10.png">
         <br>
        </li>
+       <li>     
+        <h4>본인 커피 추출 기록 관리</h4>
+         <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231086497-a5bab9b4-fffa-4a65-84da-0b332fd7f7ba.png">
+        <br>
+       </li>
+       <li>     
+        <h4>인증과 인가</h4>
+         <img alt="인증과 인가" src="https://user-images.githubusercontent.com/120706327/231095536-334f17ad-4acb-450f-8a6b-d4afb0ac4121.png">
+        <br>
+       </li>      
+       <hr>
+        <li>     
+        <h4>관리자 메인 페이</h4>
+         <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231086497-a5bab9b4-fffa-4a65-84da-0b332fd7f7ba.png">
+        <br>
+       </li>  
     </ul>
 </ul>    
     
