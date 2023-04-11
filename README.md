@@ -123,7 +123,12 @@
           <h4>커피헬퍼의 메인기능<h4>
           <img alt="메인기능 JonList" src="https://user-images.githubusercontent.com/120706327/231065638-41c53d47-167e-42aa-92d8-8bf3ba793295.png">
             <br>
-       </li>        
+       </li>
+       <li>
+        <h4>추출시 차트의 변화</h4>
+         <img alt="추출시 차트의변화" src="https://user-images.githubusercontent.com/120706327/231069019-4175f55b-94c1-4a0f-9b56-a3e847a640a1.png">
+        <br>
+       </li>  
     </ul>
 </ul>    
     
