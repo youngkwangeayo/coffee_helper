@@ -119,10 +119,9 @@
           <img width="1280" alt="커피헬퍼 메인 홈" src="https://user-images.githubusercontent.com/120706327/231041997-91969cb8-a26b-4540-b477-1b752aa1c359.png">
         </li>
         <li>커피헬퍼의 메인기능</li>
-          
+         ![커피헬퍼메인기능 이미지](https://user-images.githubusercontent.com/120706327/231064345-f0fd6723-4c6f-475b-9001-961f04349316.png)
     </ul>
 </ul>    
     
-<img width="555" alt="커피헬퍼 메인기능" src="https://user-images.githubusercontent.com/120706327/231042826-39b852d1-8040-4eb0-80d5-71f3c6b1dafd.png">
 
 
