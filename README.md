@@ -107,20 +107,22 @@
 </ul>  
 <hr>    
 <ul>
-  <li>JobList</li>
+  <li><h3>JobList</h3></li>
   <li><img width="1113" alt="커피헬퍼잡리스트3" src="https://user-images.githubusercontent.com/120706327/231062405-f413457c-c487-4601-a7a0-024e016d3cca.png"></li>
 </ul>
 <hr>   
 <ul>
-  <li><h4>기능 설명</h4></li>
+  <li><h3>기능 설명</h3></li>
     <ul>
         <li>
-          메인페이지
+          <h4>메인페이지</h4>
           <img alt="커피헬퍼 메인 홈" src="https://user-images.githubusercontent.com/120706327/231041997-91969cb8-a26b-4540-b477-1b752aa1c359.png">
+          <br>
         </li>
         <li>
-          커피헬퍼의 메인기능
+          <h4>커피헬퍼의 메인기능<h4>
           <img alt="메인기능 JonList" src="https://user-images.githubusercontent.com/120706327/231065638-41c53d47-167e-42aa-92d8-8bf3ba793295.png">
+            <br>
       </li>        
     </ul>
 </ul>    
