@@ -146,9 +146,9 @@
        </li>      
        <hr>
         <li>     
-        <h4>관리자 메인 페이</h4>
-         <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231086497-a5bab9b4-fffa-4a65-84da-0b332fd7f7ba.png">
-        <br>
+          <h4>관리자 메인 페이지</h4>
+           <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231109407-f266d2a8-c318-4fa2-aeae-6efa76854180.png">
+          <br>
        </li>  
     </ul>
 </ul>    
