@@ -129,6 +129,11 @@
          <img alt="추출시 차트의변화" src="https://user-images.githubusercontent.com/120706327/231069019-4175f55b-94c1-4a0f-9b56-a3e847a640a1.png">
         <br>
        </li>  
+       <li>
+        <h4>차트에 대한 설</h4>
+         <img alt="차트설명" src="https://user-images.githubusercontent.com/120706327/231076543-4aced39f-902c-4665-a336-6e501918fe10.png">
+        <br>
+       </li>       
     </ul>
 </ul>    
     
