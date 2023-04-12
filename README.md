@@ -130,7 +130,7 @@
   <br>
     <ul>
         <li>
-          <h2>메인페이지</h2>
+          <h1>메인페이지</h1>
           <img width="1275" alt="커피헬퍼메인페이지" src="https://user-images.githubusercontent.com/120706327/231067033-41ab8510-f5de-4142-be71-63ac59ecb8e7.png">
         </li>
         <br>
@@ -166,7 +166,7 @@
         <br>
         <br>
        <li>     
-        <h4>본인 커피 추출 기록 관리</h4>
+        <h1>본인 커피 추출 기록 관리</h1>
          <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231086497-a5bab9b4-fffa-4a65-84da-0b332fd7f7ba.png">
        </li>
          <br>
