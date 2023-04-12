@@ -144,6 +144,11 @@
          <img alt="인증과 인가" src="https://user-images.githubusercontent.com/120706327/231095536-334f17ad-4acb-450f-8a6b-d4afb0ac4121.png">
         <br>
        </li>      
+       <li>     
+        <h4>인증</h4>
+         <img alt="인증" src="https://user-images.githubusercontent.com/120706327/231324857-832c1391-f3a4-4f8b-94c1-af5ca0a11f5d.png">
+        <br>
+       </li>         
        <hr>
         <li>     
           <h4>관리자 메인 페이지</h4>
