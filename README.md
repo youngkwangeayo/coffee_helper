@@ -118,52 +118,62 @@
           <h4>메인페이지</h4>
           <img width="1275" alt="커피헬퍼메인페이지" src="https://user-images.githubusercontent.com/120706327/231067033-41ab8510-f5de-4142-be71-63ac59ecb8e7.png">
           <br>
+          <hr>
         </li>
         <li>
           <h4>커피헬퍼의 메인기능<h4>
           <img alt="메인기능 JonList" src="https://user-images.githubusercontent.com/120706327/231065638-41c53d47-167e-42aa-92d8-8bf3ba793295.png">
             <br>
+            <hr>
        </li>
        <li>
         <h4>추출시 차트의 변화</h4>
          <img alt="추출시 차트의변화" src="https://user-images.githubusercontent.com/120706327/231069019-4175f55b-94c1-4a0f-9b56-a3e847a640a1.png">
         <br>
+         <hr>
        </li>  
        <li>
         <h4>차트에 대한 설명</h4>
          <img alt="차트설명" src="https://user-images.githubusercontent.com/120706327/231076543-4aced39f-902c-4665-a336-6e501918fe10.png">
         <br>
+         <hr>
        </li>
        <li>     
         <h4>본인 커피 추출 기록 관리</h4>
          <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231086497-a5bab9b4-fffa-4a65-84da-0b332fd7f7ba.png">
         <br>
+         <hr>
        </li>
        <li>     
         <h4>인증과 인가</h4>
          <img alt="인증과 인가" src="https://user-images.githubusercontent.com/120706327/231095536-334f17ad-4acb-450f-8a6b-d4afb0ac4121.png">
         <br>
+         <hr>
        </li>      
        <li>     
         <h4>인증</h4>
          <img alt="인증" src="https://user-images.githubusercontent.com/120706327/231324857-832c1391-f3a4-4f8b-94c1-af5ca0a11f5d.png">
         <br>
+         <hr>
        </li>         
        <hr>
         <li>     
           <h4>관리자 메인 페이지</h4>
            <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231111068-ff2c7d21-9708-468c-a672-ebcc865903ec.png">
           <br>
+          <hr>
        </li>  
         <li>     
           <h4>피드백멘트 입력페이지 (관리자 기능)</h4>
            <img alt="추출결과 조건에 맞는 피드백 멘트입력" src="https://user-images.githubusercontent.com/120706327/231321977-26f64c68-fef7-4bac-8faa-ca4c96e7f11e.png">
           <br>
+          <hr>
        </li>
         <li>     
           <h4>추출별 옵션 셋팅 페이지 (관리자 기능)</h4>
            <img alt="추출결과 조건에 맞는 피드백 멘트입력" src="https://user-images.githubusercontent.com/120706327/231322375-f33c5b41-ec83-4979-b58c-64afcd62f20e.png">
           <br>
+          <hr>
        </li>
     </ul>
 </ul>    
