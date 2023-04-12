@@ -150,10 +150,17 @@
            <img alt="본인 커피 추출 기록 관리" src="https://user-images.githubusercontent.com/120706327/231111068-ff2c7d21-9708-468c-a672-ebcc865903ec.png">
           <br>
        </li>  
+        <li>     
+          <h4>피드백멘트 입력페이지 (관리자 기능)</h4>
+           <img alt="추출결과 조건에 맞는 피드백 멘트입력" src="https://user-images.githubusercontent.com/120706327/231321977-26f64c68-fef7-4bac-8faa-ca4c96e7f11e.png">
+          <br>
+       </li>
+        <li>     
+          <h4>추출별 옵션 셋팅 페이지 (관리자 기능)</h4>
+           <img alt="추출결과 조건에 맞는 피드백 멘트입력" src="https://user-images.githubusercontent.com/120706327/231322375-f33c5b41-ec83-4979-b58c-64afcd62f20e.png">
+          <br>
+       </li>
     </ul>
 </ul>    
-    
-
-
 
 
