@@ -202,9 +202,7 @@
         <br>
         <br>
         <br>
-        <br>
-         <hr>         
-       <hr>            
+        <br>            
         <li>     
           <h3>피드백멘트 입력페이지 (관리자 기능)</h3>
            <img alt="추출결과 조건에 맞는 피드백 멘트입력" src="https://user-images.githubusercontent.com/120706327/231321977-26f64c68-fef7-4bac-8faa-ca4c96e7f11e.png">
@@ -214,7 +212,7 @@
         <br>
         <br>
         <br>
-         <hr>
+         <br>
         <li>     
           <h3>추출별 옵션 셋팅 페이지 (관리자 기능)</h3>
            <img alt="추출결과 조건에 맞는 피드백 멘트입력" src="https://user-images.githubusercontent.com/120706327/231322375-f33c5b41-ec83-4979-b58c-64afcd62f20e.png">
