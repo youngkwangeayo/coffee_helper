@@ -50,7 +50,7 @@ public class ExtractController {
 
 
     
-    @GetMapping("/machineExtract")
+    @GetMapping("/machine/extract")
     public String machineExtract(@AuthenticationPrincipal PrincipalDetails principalUser,Model model,RedirectAttributes rab){
         ExtractDTO extract = extractSoftware.extractSoft();
         ResponseResultExtractDTO resultExtractDTO = feedbackService.feedbakMent(extract);
@@ -74,11 +74,12 @@ public class ExtractController {
         ResponseResultExtractDTO resultExtractDTO = feedbackService.feedbakMent(extract);
 
 
+
         return resultExtractDTO;
     }
 
 
-    @PostMapping("/extract/machineExtract")
+    @PostMapping("/user/extract")
     public @ResponseBody ResponseEntity  extractSave(@AuthenticationPrincipal PrincipalDetails principalUser, @RequestBody ResponseResultExtractDTO resultExtractDTO){
         System.out.println("컨트롤러진입" + resultExtractDTO);
         UserDTO userDTO=userService.findUserInfo(principalUser.getUsername());
@@ -91,11 +92,11 @@ public class ExtractController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @GetMapping("/user/extract")
-    public String userExtract(ExtractDTO extractDTO, @AuthenticationPrincipal PrincipalDetails principalUser, Model model, RedirectAttributes rab){
+    @GetMapping("/guest/extract")
+    public String userExtract(ExtractDTO extractDTO, Model model, RedirectAttributes rab){
         
         
-        extractDTO.setUserId(principalUser.getUser().getIdx());
+        // extractDTO.setUserId(principalUser.getUser().getIdx());
         ResponseResultExtractDTO resultExtractDTO=feedbackService.feedbakMent(extractDTO);
         rab.addFlashAttribute("resultExtractDTO", resultExtractDTO);
         // model.addAttribute("resultExtractDTO", resultExtractDTO);
