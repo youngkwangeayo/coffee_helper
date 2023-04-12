@@ -183,8 +183,7 @@
         <br>
         <br>
         <br>
-        <br>
-         <hr>         
+        <br>         
        <li>     
         <h3>인증</h3>
          <img alt="인증" src="https://user-images.githubusercontent.com/120706327/231324857-832c1391-f3a4-4f8b-94c1-af5ca0a11f5d.png">
