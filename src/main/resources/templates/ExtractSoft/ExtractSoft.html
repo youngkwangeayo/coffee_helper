@@ -16,7 +16,7 @@
                 
                 <div class="row">
                     <!-- <div class="col-md-6"><button class="form-control btn btn-secondary" onclick="extractSoft()">가상머신 커피 추출하기</button></div> -->
-                    <div class="col-md-6"><a href="/machineExtract" class="form-control btn btn-secondary">가상머신 커피 추출하기</a></div>
+                    <div class="col-md-6"><a href="/machine/extract" class="form-control btn btn-secondary">가상머신 커피 추출하기</a></div>
                     <div class="col-md-6">
                         <!-- Button trigger modal -->
                         <button type="button" class="form-control btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -31,10 +31,10 @@
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">본인추출값 입력</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/user/extract" method="get">
+                            <form action="/guest/extract" method="get">
                                 <div class="modal-body">
                                     <div class="input-group">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">추출시간</span>
@@ -85,7 +85,7 @@
         <script th:inline="javascript">
             /*<![CDATA[*/
         let xhr = new XMLHttpRequest();
-        let url = "/extract/machineExtract";
+        let url = "/user/extract";
         
 
         function extractSave(){

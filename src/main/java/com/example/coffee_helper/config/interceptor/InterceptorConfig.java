@@ -37,10 +37,7 @@ public class InterceptorConfig implements HandlerInterceptor {
                 if(method.contains("PUT")||method.contains("DELETE")){
                     if(request.getRequestURI().contains("coffee")){
                         // ok=extractIdToInt(request);
-                        String[] extractIdxs = request.getParameterValues("id"); //겟파라미터벨류스는 폼으로 던지는거 
-                        System.out.println(Arrays.toString(extractIdxs));
                         ok=extractIdToArray(request);
-                        System.out.println("ok이는"+ok);
                         return ok;
                       
                     }//커피관련 딜리트 이프 종료
