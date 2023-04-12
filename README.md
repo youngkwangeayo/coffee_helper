@@ -130,7 +130,7 @@
   <br>
     <ul>
         <li>
-          <h1>메인페이지</h1>
+          <h3>메인페이지</h3>
           <img width="1275" alt="커피헬퍼메인페이지" src="https://user-images.githubusercontent.com/120706327/231067033-41ab8510-f5de-4142-be71-63ac59ecb8e7.png">
         </li>
         <br>
