@@ -115,14 +115,6 @@
           </ul>
       </ul>
 </ul> 
-<hr>    
-<ul>
-  <br>
-  <li><h3>JobList</h3></li>
-  <li><img width="1113" alt="커피헬퍼잡리스트3" src="https://user-images.githubusercontent.com/120706327/231340386-862fdf6e-2ece-416b-b678-02dbaacc4452.png"></li>
-</ul>
-<br>
-<br>    
 <hr>
 <ul>
   <br>
@@ -133,7 +125,17 @@
 </ul>
 <br>
 <br>    
-<hr>   
+<hr>       
+<ul>
+  <br>
+  <li>
+    <h3>JobList</h3>
+    <img width="1113" alt="커피헬퍼잡리스트3" src="https://user-images.githubusercontent.com/120706327/231340386-862fdf6e-2ece-416b-b678-02dbaacc4452.png">
+  </li>
+</ul>
+<br>
+<br>    
+<hr>
 <ul>
   <li><h3>기능 설명</h3></li>
   <br>
