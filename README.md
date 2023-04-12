@@ -112,6 +112,7 @@
 </ul>
 <hr>   
 <ul>
+  <br>
   <li><h3>기능 설명</h3></li>
     <ul>
         <li>
@@ -120,6 +121,7 @@
           <br>
           <hr>
         </li>
+        <br>
         <li>
           <h4>커피헬퍼의 메인기능<h4>
           <img alt="메인기능 JonList" src="https://user-images.githubusercontent.com/120706327/231065638-41c53d47-167e-42aa-92d8-8bf3ba793295.png">
