@@ -65,6 +65,8 @@
       <img width="501" alt="커피헬퍼 erd" src="https://user-images.githubusercontent.com/120706327/230838929-5aa0b7c8-4903-41ef-a617-d0a0b2f9bef7.png">
       <p> 세로선 우측은 확장성을 위해 넣어두었습니다. </p>
       <ul>
+        <br>
+        <br>
         <li><h4>테이블 소개</h4></li>
           <ul>
             <li>extract_equalse_info</li>
@@ -107,6 +109,8 @@
 </ul>  
 <hr>    
 <ul>
+  <br>
+  <br>
   <li><h3>JobList</h3></li>
   <li><img width="1113" alt="커피헬퍼잡리스트3" src="https://user-images.githubusercontent.com/120706327/231062405-f413457c-c487-4601-a7a0-024e016d3cca.png"></li>
 </ul>
