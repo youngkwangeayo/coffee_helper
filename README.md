@@ -123,6 +123,14 @@
 </ul>
 <br>
 <br>    
+<hr>
+<ul>
+  <br>
+  <li><h3>초기 흐름도</h3></li>
+  <li>< alt="커피헬퍼초기흐름도" src="(https://user-images.githubusercontent.com/120706327/231342817-d819424f-0b1a-4e0d-a9f1-a5e6a5981a38.png"></li>
+</ul>
+<br>
+<br>    
 <hr>   
 <ul>
   <li><h3>기능 설명</h3></li>
