@@ -126,9 +126,11 @@
 <hr>   
 <ul>
   <li><h3>기능 설명</h3></li>
+  <br>
+  <br>
     <ul>
         <li>
-          <h4>메인페이지</h4>
+          <h2>메인페이지</h2>
           <img width="1275" alt="커피헬퍼메인페이지" src="https://user-images.githubusercontent.com/120706327/231067033-41ab8510-f5de-4142-be71-63ac59ecb8e7.png">
           <br>
           <br>
