@@ -235,6 +235,16 @@
         <br>
         <br>
          <br> 
+         <li>     
+          <h3>에러페이지</h3>
+           <img alt="에러페이지" src="https://user-images.githubusercontent.com/120706327/231698770-f5c94768-0841-4aa3-8cb2-c0c8473ca214.png">
+        </li>
+         <br>
+        <hr>
+        <br>
+       <br>
+        <br>
+         <br> 
     </ul>
 </ul>    
 
